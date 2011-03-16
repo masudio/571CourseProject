@@ -25,6 +25,10 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
         static void Main(string[] args)
         {
+/*            SuffixArray sa = new SuffixArray("abracadabra");
+            Console.WriteLine(sa.find_substring("ac"));
+            Console.ReadKey();*/
+
             ///////////////////////////////////////////////////////////////////////
             /////////// This is the complexity improved version working \\\\\\\\\\\
             //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
