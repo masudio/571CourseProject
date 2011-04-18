@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CPeriod.cs" />
+    <Compile Include="CPeriodCollection.cs" />
     <Compile Include="Edge.cs" />
     <Compile Include="EdgeStruct.cs" />
     <Compile Include="FileReading.cs" />

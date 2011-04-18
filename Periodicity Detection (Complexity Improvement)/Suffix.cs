@@ -6,12 +6,14 @@
         public int origin_node;
         public int first_char_index;
         public int last_char_index;
+
         public Suffix(int node, int start, int stop)
         {
             this.origin_node = node;
             this.first_char_index = start;
             this.last_char_index = stop;
         }
+
         public bool Explicit() { return first_char_index > last_char_index; }
         public bool Implicit() { return last_char_index >= first_char_index; }
 
