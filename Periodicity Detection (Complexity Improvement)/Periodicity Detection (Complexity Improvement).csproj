@@ -58,11 +58,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Edge.cs" />
+    <Compile Include="EdgeStruct.cs" />
     <Compile Include="FileReading.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="OccurList.cs" />
+    <Compile Include="OccurNode.cs" />
+    <Compile Include="Period.cs" />
+    <Compile Include="PeriodCollection.cs" />
     <Compile Include="Prime.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortBySuffix.cs" />
+    <Compile Include="Suffix.cs" />
     <Compile Include="TempSuffix.cs" />
     <Compile Include="SuffixArray.cs" />
     <Compile Include="SuffTree.cs" />

@@ -51,7 +51,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
             {
                 mid = (high + low)/2;
                 this_suffix = this.suffix_array[mid].the_suffix;
-                compare_len = the_substring.Length - 1;
+                compare_len = the_substring.Length;
                 comparison = this_suffix.Substring(0, compare_len);
 
                 if (comparison.CompareTo(the_substring) > 0)

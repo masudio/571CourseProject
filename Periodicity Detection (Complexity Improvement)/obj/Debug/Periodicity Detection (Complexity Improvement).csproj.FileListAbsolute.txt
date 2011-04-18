@@ -1,0 +1,5 @@
+D:\CPSC\CPSC571\571CourseProject\Periodicity Detection (Complexity Improvement)\bin\Debug\Periodicity Detection (Complexity Improvement).exe
+D:\CPSC\CPSC571\571CourseProject\Periodicity Detection (Complexity Improvement)\bin\Debug\Periodicity Detection (Complexity Improvement).pdb
+D:\CPSC\CPSC571\571CourseProject\Periodicity Detection (Complexity Improvement)\obj\Debug\ResolveAssemblyReference.cache
+D:\CPSC\CPSC571\571CourseProject\Periodicity Detection (Complexity Improvement)\obj\Debug\Periodicity Detection (Complexity Improvement).exe
+D:\CPSC\CPSC571\571CourseProject\Periodicity Detection (Complexity Improvement)\obj\Debug\Periodicity Detection (Complexity Improvement).pdb
