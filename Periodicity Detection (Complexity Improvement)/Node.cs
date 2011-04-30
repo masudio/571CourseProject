@@ -5,7 +5,7 @@
     //  at a particular node can find the next smaller suffix
     //  by following the suffix_node link to a new node.  Nodes
     //  are stored in a simple array.
-    class Node
+    public class Node
     {
         public int idx;
         public int suffix_node;

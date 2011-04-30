@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Periodicity_Detection__Complexity_Improvement_
 {
-    internal class SuffixArray
+    public class SuffixArray
     {
         private string TheString { get; set; }
         private List<TempSuffix> TheSuffixArray { get; set; }

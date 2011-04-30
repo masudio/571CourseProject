@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Periodicity_Detection__Complexity_Improvement_
 {
-    class Program
+    public class Program
     {
         public static String s = ""; //"abcabcabbabcabcabc" + "$";
         static double minTh = 0.7;

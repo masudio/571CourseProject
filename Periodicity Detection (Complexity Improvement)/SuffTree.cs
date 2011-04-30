@@ -854,6 +854,8 @@ namespace Periodicity_Detection__Complexity_Improvement_
                     originEdges.Add(edge);
                 }
             }
+
+            return originEdges;
         }
     }
 }

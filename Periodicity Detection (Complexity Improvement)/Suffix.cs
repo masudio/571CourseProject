@@ -1,6 +1,6 @@
 ﻿namespace Periodicity_Detection__Complexity_Improvement_
 {
-    class Suffix
+    public class Suffix
     {
         public static string T;
         public int origin_node;

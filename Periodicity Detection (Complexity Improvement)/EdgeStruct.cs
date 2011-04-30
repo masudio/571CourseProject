@@ -1,6 +1,6 @@
 ﻿namespace Periodicity_Detection__Complexity_Improvement_
 {
-    class EdgeStruct
+    public class EdgeStruct
     {
         public Edge e;
         public int tabs;

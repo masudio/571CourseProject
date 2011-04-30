@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Periodicity_Detection__Complexity_Improvement_
 {
-    class FileReading
+    public class FileReading
     {
         public static List<int> ReadIntFile(string path)
         {

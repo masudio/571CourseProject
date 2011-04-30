@@ -1,6 +1,6 @@
 ﻿namespace Periodicity_Detection__Complexity_Improvement_
 {
-    class OccurList
+    public class OccurList
     {
         public int Length = 0;
         public OccurNode firstNode = null;
