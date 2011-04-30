@@ -414,7 +414,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
                 else        // node has not been marked yet
                 {
                     int myval = 0;
-                    if (es.e.last_char_index == (N - 1))        // if it leads to a root
+                    if (es.e.last_char_index == (N - 1))        // if it leads to a leaf
                     {
                         myval = N - ((es.e.last_char_index - es.e.first_char_index) + 1 + es.pnValue);
 

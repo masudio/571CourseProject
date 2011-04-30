@@ -7,64 +7,139 @@ namespace Periodicity_Detection__Complexity_Improvement_
 {
     class SuffixArray
     {
-        private string the_string { get; set; }
-        private List<TempSuffix> suffix_array { get; set; }
+        private string TheString { get; set; }
+        private List<TempSuffix> TheSuffixArray { get; set; }
 
-        public SuffixArray(string the_string)
+        public SuffixArray(string theString)
         {
-            this.the_string = the_string;
-            this.suffix_array = new List<TempSuffix>();
+            this.TheString = theString;
+            this.TheSuffixArray = new List<TempSuffix>();
 
             TempSuffix the_suffix;
             int the_position;
-            for (int i = 0; i < the_string.Length; i++)
+            for (int i = 0; i < theString.Length; i++)
             {
                 the_position = i;
                 the_suffix = new TempSuffix(
-                    the_string.Substring(i), the_position);
-                this.suffix_array.Add(the_suffix);
+                    theString.Substring(i), the_position);
+                this.TheSuffixArray.Add(the_suffix);
             }
 
-            suffix_array = SortArray<SortBySuffix>();
+            TheSuffixArray = SortArray<SortBySuffix>();
         }
 
         public List<TempSuffix> SortArray<TSortingAlgorithm>()
             where TSortingAlgorithm : IComparer, new()
         {
-            var sortedList = new List<TempSuffix>(suffix_array);
+            var sortedList = new List<TempSuffix>(TheSuffixArray);
             sortedList.Sort((IComparer<TempSuffix>) new TSortingAlgorithm());
 
             return sortedList;
         }
 
-        public int find_substring(string the_substring)
+        public int FindSubstring(string theSubstring)
         {
-            int high = suffix_array.Count - 1;
-            int low = 0;
+            var high = TheSuffixArray.Count - 1;
+            var low = 0;
             int mid;
 
-            string this_suffix;
+            string thisSuffix;
             int compare_len;
             string comparison;
 
             while(low <= high)
             {
                 mid = (high + low)/2;
-                this_suffix = this.suffix_array[mid].the_suffix;
-                compare_len = the_substring.Length;
-                comparison = this_suffix.Substring(0, compare_len);
+                thisSuffix = this.TheSuffixArray[mid].TheSuffix;
+                compare_len = theSubstring.Length;
+                comparison = thisSuffix.Substring(0, compare_len);
 
-                if (comparison.CompareTo(the_substring) > 0)
+                if (comparison.CompareTo(theSubstring) > 0)
                     high = mid - 1;
-                else if (comparison.CompareTo(the_substring) < 0)
+                else if (comparison.CompareTo(theSubstring) < 0)
                     low = mid + 1;
                 else
                 {
-                    return this.suffix_array[mid].the_position;
+                    return this.TheSuffixArray[mid].ThePosition;
                 }
             }
 
             return -1;
+        }
+
+        /**
+         * Postcondition: finds all occurences of the parameter in
+         * the suffix array.
+         * 
+         * @param theSubstring the substring to search for.
+         */
+        public List<int> FindAllSubstrings(string theSubstring)
+        {
+            var high = TheSuffixArray.Count - 1;
+            var low = 0;
+            int mid;
+
+            string thisSuffix;
+            string comparison;
+            int compareLength = theSubstring.Length;
+
+            var substringIndexList = new List<int>();
+
+            while (low <= high)
+            {
+                mid = (high + low) / 2;
+                thisSuffix = this.TheSuffixArray[mid].TheSuffix;
+                comparison = thisSuffix.Substring(0, compareLength);
+
+                if (comparison.CompareTo(theSubstring) > 0)
+                    high = mid - 1;
+                else if (comparison.CompareTo(theSubstring) < 0)
+                    low = mid + 1;
+                else {
+                    //found a match
+                    substringIndexList.Add(this.TheSuffixArray[mid].ThePosition);
+
+                    //now check for multiple occurences after mid
+                    var probeUp = mid++;
+                    while(probeUp < this.TheSuffixArray.Count)
+                    {
+                        thisSuffix = this.TheSuffixArray[probeUp].TheSuffix;
+                        comparison = thisSuffix.Substring(0, compareLength);
+
+                        if(comparison.CompareTo(theSubstring) == 0)
+                        {
+                            substringIndexList.Add(this.TheSuffixArray[probeUp].ThePosition);
+                            probeUp++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    //now check for multiple occurences before mid
+                    var probeDown = mid--;
+                    while (probeDown >= 0)
+                    {
+                        thisSuffix = this.TheSuffixArray[probeDown].TheSuffix;
+                        comparison = thisSuffix.Substring(0, compareLength);
+
+                        if(comparison.CompareTo(theSubstring) == 0)
+                        {
+                            substringIndexList.Add(this.TheSuffixArray[probeDown].ThePosition);
+                            probeDown++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    break;
+                }
+            }
+
+            return substringIndexList;
         }
     }
 }

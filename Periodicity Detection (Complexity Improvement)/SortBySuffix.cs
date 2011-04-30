@@ -8,7 +8,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
     {
         public override int Compare(TempSuffix x, TempSuffix y)
         {
-            return x.the_suffix.CompareTo(y.the_suffix);
+            return x.TheSuffix.CompareTo(y.TheSuffix);
         }
     }
 }

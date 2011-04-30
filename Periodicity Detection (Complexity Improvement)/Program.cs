@@ -10,8 +10,8 @@ namespace Periodicity_Detection__Complexity_Improvement_
     {
         public static String s = ""; //"abcabcabbabcabcabc" + "$";
         static double minTh = 0.7;
-        static double minLengthSegment = 0.1;
-        static int minPeriod = 2;
+        static double minLengthSegment = 0.9;
+        static int minPeriod = 1;
         static int maxPeriod = 500;
         public static int minStrLen = 1;
         public static int maxStrLen = 100000;
@@ -25,32 +25,36 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
         static void Main(string[] args)
         {
-            /*
+            
             SuffixArray sa = new SuffixArray("abracadabra");
-            Console.WriteLine(sa.find_substring("ac"));
-            Console.ReadKey();
-            */
+            Console.WriteLine(sa.FindSubstring("ac"));
+            var allSubstrings = sa.FindAllSubstrings("a");
+            foreach (var index in allSubstrings)
+            {
+                Console.WriteLine("index of occurence of a: " + index);
+            }
+
             ///////////////////////////////////////////////////////////////////////
             /////////// This is the complexity improved version working \\\\\\\\\\\
             //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
             //int[] occur = new int[]{0,3,5,6,9,13,15,18,19,21};
             //CalculatePeriod(occur, s.Length);
-             
+
             /*Console.WriteLine(s);
             Console.WriteLine("01234567890123456789");
             Console.WriteLine();
              */
-            
-            //String fn = @"c:\output";
 
+            //String fn = @"c:\output";
+            /*
             string path = @"D:\CPSC\CPSC571\571CourseProject\";
             //for (int i = 1; i <= 1; i++)
             //{
                 periodCollection = new List<CPeriod>();
                 preCountPerCol = periodCollection.Count;
                 candPerCount = 0; addPerCount = 0; occVecCount = 0;
-                string fn = "abracadabra.data";
+                string fn = "data/abracadabra.data";
                 FileStream fs = new FileStream(path + fn, FileMode.Open);
                 StreamReader sr = new StreamReader(fs);
                 s = sr.ReadToEnd().Trim() + "$";

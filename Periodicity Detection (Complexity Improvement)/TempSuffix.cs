@@ -6,13 +6,13 @@ namespace Periodicity_Detection__Complexity_Improvement_
 {
     public class TempSuffix
     {
-        public string the_suffix { get; set; }
-        public int the_position { get; set; }
+        public string TheSuffix { get; set; }
+        public int ThePosition { get; set; }
 
-        public TempSuffix(string the_suffix, int the_position)
+        public TempSuffix(string theSuffix, int thePosition)
         {
-            this.the_position = the_position;
-            this.the_suffix = the_suffix;
+            this.ThePosition = thePosition;
+            this.TheSuffix = theSuffix;
         }
     }
 }
