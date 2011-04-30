@@ -37,8 +37,11 @@ namespace Periodicity_Detection__Complexity_Improvement_
             return sortedList;
         }
 
-        public int FindSubstring(string theSubstring)
+        public bool FindSubstring(string theSubstring)
         {
+            if (theSubstring == null || TheString == null || theSubstring.Equals(""))
+                return false;
+
             var high = TheSuffixArray.Count - 1;
             var low = 0;
             int mid;
@@ -52,7 +55,9 @@ namespace Periodicity_Detection__Complexity_Improvement_
                 mid = (high + low)/2;
                 thisSuffix = this.TheSuffixArray[mid].TheSuffix;
                 compare_len = theSubstring.Length;
-                comparison = thisSuffix.Substring(0, compare_len);
+                comparison = thisSuffix;
+                if (thisSuffix.Length > theSubstring.Length)
+                    comparison = thisSuffix.Substring(0, compare_len);
 
                 if (comparison.CompareTo(theSubstring) > 0)
                     high = mid - 1;
@@ -60,11 +65,11 @@ namespace Periodicity_Detection__Complexity_Improvement_
                     low = mid + 1;
                 else
                 {
-                    return this.TheSuffixArray[mid].ThePosition;
+                    return true;
                 }
             }
 
-            return -1;
+            return false;
         }
 
         /**
@@ -90,7 +95,9 @@ namespace Periodicity_Detection__Complexity_Improvement_
             {
                 mid = (high + low)/2;
                 thisSuffix = this.TheSuffixArray[mid].TheSuffix;
-                comparison = thisSuffix.Substring(0, compareLength);
+                comparison = thisSuffix;
+                if (thisSuffix.Length > theSubstring.Length)
+                    comparison = thisSuffix.Substring(0, compareLength);
 
                 if (comparison.CompareTo(theSubstring) > 0)
                     high = mid - 1;

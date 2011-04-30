@@ -6,9 +6,11 @@ using System.Text;
 using NUnit.Framework;
 using Periodicity_Detection__Complexity_Improvement_;
 
+
+
 namespace Test {
 
-    [TestFixture]
+    [Test]
     class Test {
 
         public static String s = ""; //"abcabcabbabcabcabc" + "$";
