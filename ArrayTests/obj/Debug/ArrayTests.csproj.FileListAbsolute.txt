@@ -1,0 +1,7 @@
+C:\Users\jkcampbe\workspace\571CourseProject\ArrayTests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jkcampbe\workspace\571CourseProject\ArrayTests\bin\Debug\ArrayTests.dll
+C:\Users\jkcampbe\workspace\571CourseProject\ArrayTests\bin\Debug\ArrayTests.pdb
+C:\Users\jkcampbe\workspace\571CourseProject\ArrayTests\bin\Debug\Periodicity Detection (Complexity Improvement).exe
+C:\Users\jkcampbe\workspace\571CourseProject\ArrayTests\bin\Debug\Periodicity Detection (Complexity Improvement).pdb
+C:\Users\jkcampbe\workspace\571CourseProject\ArrayTests\obj\Debug\ArrayTests.dll
+C:\Users\jkcampbe\workspace\571CourseProject\ArrayTests\obj\Debug\ArrayTests.pdb
