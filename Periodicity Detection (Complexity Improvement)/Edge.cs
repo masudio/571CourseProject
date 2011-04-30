@@ -12,7 +12,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
     // table indicates an unused slot by setting the
     // start_node value to -1.
     //
-    class Edge : IComparable
+    public class Edge : IComparable
     {
         public int eid = -1;
         //public int st = -1;
@@ -170,7 +170,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
         // to the caller will have start_node set to -1, which is the value
         // used in the hash table to flag an unused entry.
         public static Edge Find(int node, char c)
-        {
+        { 
             /*foreach (Edge edge in Edges)
             {
                 if (edge.start_node == node)

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Periodicity_Detection__Complexity_Improvement_
 {
-    class SuffixArray
+    internal class SuffixArray
     {
         private string TheString { get; set; }
         private List<TempSuffix> TheSuffixArray { get; set; }
@@ -47,7 +47,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
             int compare_len;
             string comparison;
 
-            while(low <= high)
+            while (low <= high)
             {
                 mid = (high + low)/2;
                 thisSuffix = this.TheSuffixArray[mid].TheSuffix;
@@ -73,6 +73,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
          * 
          * @param theSubstring the substring to search for.
          */
+
         public List<int> FindAllSubstrings(string theSubstring)
         {
             var high = TheSuffixArray.Count - 1;
@@ -87,7 +88,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
             while (low <= high)
             {
-                mid = (high + low) / 2;
+                mid = (high + low)/2;
                 thisSuffix = this.TheSuffixArray[mid].TheSuffix;
                 comparison = thisSuffix.Substring(0, compareLength);
 
@@ -95,18 +96,20 @@ namespace Periodicity_Detection__Complexity_Improvement_
                     high = mid - 1;
                 else if (comparison.CompareTo(theSubstring) < 0)
                     low = mid + 1;
-                else {
+                else
+                {
                     //found a match
                     substringIndexList.Add(this.TheSuffixArray[mid].ThePosition);
 
                     //now check for multiple occurences after mid
-                    var probeUp = mid++;
-                    while(probeUp < this.TheSuffixArray.Count)
+                    var probeUp = mid;
+                    probeUp++;
+                    while (probeUp < this.TheSuffixArray.Count)
                     {
                         thisSuffix = this.TheSuffixArray[probeUp].TheSuffix;
                         comparison = thisSuffix.Substring(0, compareLength);
 
-                        if(comparison.CompareTo(theSubstring) == 0)
+                        if (comparison.CompareTo(theSubstring) == 0)
                         {
                             substringIndexList.Add(this.TheSuffixArray[probeUp].ThePosition);
                             probeUp++;
@@ -118,16 +121,17 @@ namespace Periodicity_Detection__Complexity_Improvement_
                     }
 
                     //now check for multiple occurences before mid
-                    var probeDown = mid--;
+                    var probeDown = mid;
+                    probeDown--;
                     while (probeDown >= 0)
                     {
                         thisSuffix = this.TheSuffixArray[probeDown].TheSuffix;
                         comparison = thisSuffix.Substring(0, compareLength);
 
-                        if(comparison.CompareTo(theSubstring) == 0)
+                        if (comparison.CompareTo(theSubstring) == 0)
                         {
                             substringIndexList.Add(this.TheSuffixArray[probeDown].ThePosition);
-                            probeDown++;
+                            probeDown--;
                         }
                         else
                         {

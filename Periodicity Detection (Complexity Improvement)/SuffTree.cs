@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Periodicity_Detection__Complexity_Improvement_
 {
-    class SuffTree
+    public class SuffTree
     {
         StringBuilder ov = new StringBuilder(); // to extract complexity improvement data, 10th sep 2008, 6:09 am
         public string T; // the input string to the stree
@@ -845,5 +845,15 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
         public int stn = 0;
 
+        public List<Edge> GetOriginEdges()
+        {
+            var originEdges = new List<Edge>();
+
+            foreach (var edge in Edge.Edges) {
+                if (edge.start_node == 0) {
+                    originEdges.Add(edge);
+                }
+            }
+        }
     }
 }

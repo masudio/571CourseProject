@@ -25,7 +25,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
         static void Main(string[] args)
         {
-            
+            /*
             SuffixArray sa = new SuffixArray("abracadabra");
             Console.WriteLine(sa.FindSubstring("ac"));
             var allSubstrings = sa.FindAllSubstrings("a");
@@ -33,7 +33,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
             {
                 Console.WriteLine("index of occurence of a: " + index);
             }
-
+            */
             ///////////////////////////////////////////////////////////////////////
             /////////// This is the complexity improved version working \\\\\\\\\\\
             //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -41,32 +41,30 @@ namespace Periodicity_Detection__Complexity_Improvement_
             //int[] occur = new int[]{0,3,5,6,9,13,15,18,19,21};
             //CalculatePeriod(occur, s.Length);
 
-            /*Console.WriteLine(s);
+            //String fn = @"c:\output";
+            
+            string path = @"D:\CPSC\CPSC571\571CourseProject\";
+
+            periodCollection = new List<CPeriod>();
+            preCountPerCol = periodCollection.Count;
+            candPerCount = 0; addPerCount = 0; occVecCount = 0;
+            string fn = "data/abracadabra.data";
+            FileStream fs = new FileStream(path + fn, FileMode.Open);
+            StreamReader sr = new StreamReader(fs);
+            s = sr.ReadToEnd().Trim() + "$";
+
+            Console.WriteLine(s);
             Console.WriteLine("01234567890123456789");
             Console.WriteLine();
-             */
 
-            //String fn = @"c:\output";
-            /*
-            string path = @"D:\CPSC\CPSC571\571CourseProject\";
-            //for (int i = 1; i <= 1; i++)
-            //{
-                periodCollection = new List<CPeriod>();
-                preCountPerCol = periodCollection.Count;
-                candPerCount = 0; addPerCount = 0; occVecCount = 0;
-                string fn = "data/abracadabra.data";
-                FileStream fs = new FileStream(path + fn, FileMode.Open);
-                StreamReader sr = new StreamReader(fs);
-                s = sr.ReadToEnd().Trim() + "$";
-                
-                SuffTree st = new SuffTree(s, minTh, tolWin, dmax, minLengthSegment, path + fn + "-Th=" + minTh + ", TolWin=" + tolWin, -2);
-                Console.WriteLine("Candidate Period Count: " + candPerCount);
-                Console.WriteLine("Added Period Count: " + addPerCount);
-                Console.WriteLine("Occur Vector Count: " + occVecCount);
-                Console.WriteLine();
-                //Console.ReadLine();
-            //}
-            Console.ReadLine();
+            SuffTree st = new SuffTree(s, minTh, tolWin, dmax, minLengthSegment,
+                path + fn + "-Th=" + minTh + ", TolWin=" + tolWin, -2);
+
+            Console.WriteLine("Candidate Period Count: " + candPerCount);
+            Console.WriteLine("Added Period Count: " + addPerCount);
+            Console.WriteLine("Occur Vector Count: " + occVecCount);
+            Console.WriteLine();
+
 
             /* int y = 0;
            for (int i = 0; i < periodCollection.Count; i++)
