@@ -858,19 +858,26 @@ namespace Periodicity_Detection__Complexity_Improvement_
             return originEdges;
         }
 
-        public int FindSubstring(string theSubstring)
+        /**
+         * returns true if the given substring exists in this object's tree, false
+         * otherwise.
+         */
+        public bool FindSubstring(string theSubstring)
         {
-            int substringNode = FindSubstringNode(theSubstring, 0, GetEdgesWithSource(0));
-
-            //TODO: implement this method
-            return -1;
+            if (FindSubstringNode(theSubstring, 0, GetEdgesWithSource(0)) != -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /**
          * Finds the node at the end of the given substring in the tree, or -1 if substring
          * doesn't exist in tree.
          */
-
         public int FindSubstringNode(string theSubstring, int currentNode, List<Edge> currentChildEdges)
         {
             if(theSubstring.Equals(""))
@@ -882,14 +889,21 @@ namespace Periodicity_Detection__Complexity_Improvement_
             {
                 if(edge.PrefixMatch(theSubstring))
                 {
+                    if(Edge.StopSubstringNodeSearch)
+                    {
+                        Edge.StopSubstringNodeSearch = false; // may not be needed, already in PrefixMatch
+                        return edge.end_node;
+                    }
+
                     return FindSubstringNode(
-                        theSubstring.Substring(edge.last_char_index - edge.first_char_index),
+                        theSubstring.Substring(edge.last_char_index - edge.first_char_index + 1),
                         edge.end_node,
                         GetEdgesWithSource(edge.end_node));
                 }
             }
 
-            return -1; // if no edges with currentNode as source, then substring is not found
+            return -1; // if no edges with currentNode as source, then we're at a leaf, and
+                        // substring is not found
         }
     }
 }

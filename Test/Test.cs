@@ -10,7 +10,7 @@ using Periodicity_Detection__Complexity_Improvement_;
 
 namespace Test {
 
-    [Test]
+    [TestFixture]
     class Test {
 
         public static String s = ""; //"abcabcabbabcabcabc" + "$";
@@ -48,15 +48,6 @@ namespace Test {
 
             st = new SuffTree(s, minTh, tolWin, dmax, minLengthSegment,
                 path + fn + "-Th=" + minTh + ", TolWin=" + tolWin, -2);
-/*
-            Console.WriteLine(s);
-            Console.WriteLine("0123456789012345678901234567890123456789");
-            Console.WriteLine();
-
-            Console.WriteLine("Candidate Period Count: " + candPerCount);
-            Console.WriteLine("Added Period Count: " + addPerCount);
-            Console.WriteLine("Occur Vector Count: " + occVecCount);
-            Console.WriteLine();*/
 
         }
 

@@ -336,16 +336,25 @@ namespace Periodicity_Detection__Complexity_Improvement_
             }
         }
 
+        public static bool StopSubstringNodeSearch; // used in FindSubstring algorithm (PrefixMatch)
+
         /**
          * Checks if this edge's string is a prefix of the searched-for substring.
          */
         public bool PrefixMatch(string theSubstring)
         {
-            var edgeStringLength = this.last_char_index - this.first_char_index;
+            StopSubstringNodeSearch = false;
+
+            var edgeStringLength = this.last_char_index - this.first_char_index + 1;
 
             if(theSubstring.Length < edgeStringLength)
             {
-                return false;
+                // need some way to tell caller that IF this returns true, then this node is
+                // THE substring node, and not to go further down in tree
+                StopSubstringNodeSearch = true;
+
+                return theSubstring.Equals(
+                    T.Substring(this.first_char_index, theSubstring.Length));
             }
 
             for(int i = 0; i < edgeStringLength; i++)
