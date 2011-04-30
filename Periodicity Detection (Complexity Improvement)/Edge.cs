@@ -335,5 +335,26 @@ namespace Periodicity_Detection__Complexity_Improvement_
                 stNodeArray[i] = Edges[i].start_node;
             }
         }
+
+        /**
+         * Checks if this edge's string is a prefix of the searched-for substring.
+         */
+        public bool PrefixMatch(string theSubstring)
+        {
+            var edgeStringLength = this.last_char_index - this.first_char_index;
+
+            if(theSubstring.Length < edgeStringLength)
+            {
+                return false;
+            }
+
+            for(int i = 0; i < edgeStringLength; i++)
+            {
+                if (!T[i].Equals(theSubstring[i]))
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -845,17 +845,51 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
         public int stn = 0;
 
-        public List<Edge> GetOriginEdges()
+        public List<Edge> GetEdgesWithSource(int sourceNode)
         {
             var originEdges = new List<Edge>();
 
             foreach (var edge in Edge.Edges) {
-                if (edge.start_node == 0) {
+                if (edge.start_node == sourceNode) {
                     originEdges.Add(edge);
                 }
             }
 
             return originEdges;
+        }
+
+        public int FindSubstring(string theSubstring)
+        {
+            int substringNode = FindSubstringNode(theSubstring, 0, GetEdgesWithSource(0));
+
+            //TODO: implement this method
+            return -1;
+        }
+
+        /**
+         * Finds the node at the end of the given substring in the tree, or -1 if substring
+         * doesn't exist in tree.
+         */
+
+        public int FindSubstringNode(string theSubstring, int currentNode, List<Edge> currentChildEdges)
+        {
+            if(theSubstring.Equals(""))
+            {
+                return currentNode; // base case
+            }
+
+            foreach (var edge in currentChildEdges)
+            {
+                if(edge.PrefixMatch(theSubstring))
+                {
+                    return FindSubstringNode(
+                        theSubstring.Substring(edge.last_char_index - edge.first_char_index),
+                        edge.end_node,
+                        GetEdgesWithSource(edge.end_node));
+                }
+            }
+
+            return -1; // if no edges with currentNode as source, then substring is not found
         }
     }
 }
