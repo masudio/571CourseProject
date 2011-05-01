@@ -79,7 +79,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
          * @param theSubstring the substring to search for.
          */
 
-        public List<int> FindAllSubstrings(string theSubstring)
+        public List<int> FindAllOccurrences(string theSubstring)
         {
             var high = TheSuffixArray.Count - 1;
             var low = 0;
