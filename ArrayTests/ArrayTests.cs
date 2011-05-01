@@ -72,7 +72,7 @@ namespace ArrayTests
         {
             string theString = "abracadabraababbra";
             SuffixArray theArray = new SuffixArray(theString);
-            List<int> result = theArray.FindAllSubstrings("bra");
+            List<int> result = new List<int>(theArray.FindAllOccurrences("bra"));
             List<int> correct = new List<int>();
             correct.Add(1); correct.Add(8); correct.Add(15);
             //Assert.AreEqual(result, correct);
@@ -80,28 +80,28 @@ namespace ArrayTests
 
             result.Clear(); correct.Clear();
 
-            result = theArray.FindAllSubstrings("brac");
+            result = new List<int>(theArray.FindAllOccurrences("brac"));
             Assert.AreEqual(result.Count(), 1);
             correct.Add(1);
             //Assert.AreEqual(result, correct);
 
             result.Clear(); correct.Clear();
 
-            result = theArray.FindAllSubstrings("ab");
+            result = new List<int>(theArray.FindAllOccurrences("ab"));
             correct.Add(0); correct.Add(7); correct.Add(11); correct.Add(13);
             //Assert.AreEqual(result, correct);
             Assert.AreEqual(result.Count(), 4);
         }
 
         [TestMethod]
-        public void testfailedFindAllSubstringsArrays()
+        public void testfailedFindAllOccurrencesArrays()
         {
             string theString = "abracadabraababbra";
             SuffixArray theArray = new SuffixArray(theString);
-            List<int> result = theArray.FindAllSubstrings("jason");
+            List<int> result = new List<int>(theArray.FindAllOccurrences("jason"));
             Assert.AreEqual(result.Count(), 0);
 
-            result = theArray.FindAllSubstrings("testword");
+            result = new List<int>(theArray.FindAllOccurrences("testword"));
             Assert.AreEqual(result.Count(), 0);
         }
     }
