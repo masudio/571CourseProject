@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Periodicity_Detection__Complexity_Improvement_
 {
-    public class SuffTree
+    public class SuffTree : SuffixHelper
     {
         StringBuilder ov = new StringBuilder(); // to extract complexity improvement data, 10th sep 2008, 6:09 am
         public string T; // the input string to the stree
@@ -917,7 +917,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
          * Returns a list of all occurrences of the given substring, or an empty list if
          * none are found.
          */
-        public IEnumerable<int> FindAllSubstrings(string theSubstring)
+        public IEnumerable<int> FindAllOccurrences(string theSubstring)
         {
             if (theSubstring == null) //error check
                 return new List<int>();

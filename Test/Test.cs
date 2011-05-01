@@ -82,28 +82,28 @@ namespace Test {
         [Test]
         public void ShouldFindAllSubstringOccurences()
         {
-            var substringOccurences = st.FindAllSubstrings("abc");
+            var substringOccurences = st.FindAllOccurrences("abc");
             Assert.AreEqual(5, substringOccurences.Count());
-            substringOccurences = st.FindAllSubstrings("c");
+            substringOccurences = st.FindAllOccurrences("c");
             Assert.AreEqual(5, substringOccurences.Count());
-            substringOccurences = st.FindAllSubstrings("def");
+            substringOccurences = st.FindAllOccurrences("def");
             Assert.AreEqual(1, substringOccurences.Count());
-            substringOccurences = st.FindAllSubstrings("aba");
+            substringOccurences = st.FindAllOccurrences("aba");
             Assert.AreEqual(3, substringOccurences.Count());
-            substringOccurences = st.FindAllSubstrings("bc");
+            substringOccurences = st.FindAllOccurrences("bc");
             Assert.AreEqual(5, substringOccurences.Count());
         }
 
         [Test]
         public void ShouldNotFindSubstringsThatDontExistInTree()
         {
-            var substringOccurences = st.FindAllSubstrings("jason");
+            var substringOccurences = st.FindAllOccurrences("jason");
             Assert.AreEqual(0, substringOccurences.Count());
-            substringOccurences = st.FindAllSubstrings("abbbb");
+            substringOccurences = st.FindAllOccurrences("abbbb");
             Assert.AreEqual(0, substringOccurences.Count());
-            substringOccurences = st.FindAllSubstrings("abcdd");
+            substringOccurences = st.FindAllOccurrences("abcdd");
             Assert.AreEqual(0, substringOccurences.Count());
-            substringOccurences = st.FindAllSubstrings("z");
+            substringOccurences = st.FindAllOccurrences("z");
             Assert.AreEqual(0, substringOccurences.Count());
         }
     }

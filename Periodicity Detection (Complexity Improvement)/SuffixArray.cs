@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Periodicity_Detection__Complexity_Improvement_
 {
-    public class SuffixArray
+    public class SuffixArray : SuffixHelper
     {
         private string TheString { get; set; }
         private List<TempSuffix> TheSuffixArray { get; set; }
@@ -79,7 +79,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
          * @param theSubstring the substring to search for.
          */
 
-        public List<int> FindAllOccurrences(string theSubstring)
+        public IEnumerable<int> FindAllOccurrences(string theSubstring)
         {
             var high = TheSuffixArray.Count - 1;
             var low = 0;
