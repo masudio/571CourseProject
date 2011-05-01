@@ -845,6 +845,9 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
         public int stn = 0;
 
+        /**
+         * Returns all edges with start node value equal to parameter.
+         */
         public List<Edge> GetEdgesWithSource(int sourceNode)
         {
             var originEdges = new List<Edge>();
@@ -864,7 +867,11 @@ namespace Periodicity_Detection__Complexity_Improvement_
          */
         public bool FindSubstring(string theSubstring)
         {
-            if (FindSubstringNode(theSubstring, 0, GetEdgesWithSource(0)) != -1)
+            if (theSubstring == null) // error check
+                return false;
+
+            var substringEndNode = FindSubstringNode(theSubstring, 0, GetEdgesWithSource(0));
+            if (substringEndNode != -1)
             {
                 return true;
             }
@@ -904,6 +911,61 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
             return -1; // if no edges with currentNode as source, then we're at a leaf, and
                         // substring is not found
+        }
+        
+        /**
+         * Returns a list of all occurrences of the given substring, or an empty list if
+         * none are found.
+         */
+        public IEnumerable<int> FindAllSubstrings(string theSubstring)
+        {
+            if (theSubstring == null) //error check
+                return new List<int>();
+
+            var substringEndNode = FindSubstringNode(theSubstring, 0, GetEdgesWithSource(0));
+            var childEdges = GetEdgesWithSource(substringEndNode);
+            var substringIndexList = new List<int>();
+
+            if (substringEndNode == -1) // no occurences found
+                return new List<int>();
+
+            if (childEdges.Count == 0) // one occurence found
+            {
+                substringIndexList.Add(T.IndexOf(theSubstring));
+                return substringIndexList;
+            }
+
+            //recursive call to find 'value' attributes of leaf edges
+            substringIndexList = new List<int>(
+                FindLeafIndexes(substringEndNode, substringIndexList, childEdges));
+
+            return substringIndexList;
+        }
+
+        /**
+         * helper method for FindAllSubstrings, finds all 'value' attributes for each
+         * leaf edge.
+         */
+        public IEnumerable<int> FindLeafIndexes(int originNode,
+            IEnumerable<int> currentIndexList, IEnumerable<Edge> currentEdges)
+        {
+            List<int> localList = new List<int>();
+
+            foreach (var edge in currentEdges)
+            {
+                var loopEdgeList = GetEdgesWithSource(edge.end_node);
+
+                if(loopEdgeList.Count == 0)
+                {
+                    localList.Add(edge.value);
+                }
+                else
+                {
+                    localList.AddRange(FindLeafIndexes(edge.end_node, localList, loopEdgeList));   
+                }
+            }
+
+            return localList;
         }
     }
 }

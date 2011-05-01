@@ -359,7 +359,7 @@ namespace Periodicity_Detection__Complexity_Improvement_
 
             for(int i = 0; i < edgeStringLength; i++)
             {
-                if (!T[i].Equals(theSubstring[i]))
+                if (!T[this.first_char_index + i].Equals(theSubstring[i]))
                     return false;
             }
 

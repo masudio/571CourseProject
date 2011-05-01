@@ -35,20 +35,12 @@ namespace Test {
         [SetUp]
         public void setup()
         {
-
             string path = @"D:\CPSC\CPSC571\571CourseProject\";
-
-            periodCollection = new List<CPeriod>();
-            preCountPerCol = periodCollection.Count;
-            candPerCount = 0; addPerCount = 0; occVecCount = 0;
             string fn = "data/abracadabra.data";
-            FileStream fs = new FileStream(path + fn, FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
-            s = sr.ReadToEnd().Trim() + "$";
+            s = "abcabcabcabcdefghiihgabcabababab$";
 
             st = new SuffTree(s, minTh, tolWin, dmax, minLengthSegment,
                 path + fn + "-Th=" + minTh + ", TolWin=" + tolWin, -2);
-
         }
 
         [Test]
@@ -69,6 +61,50 @@ namespace Test {
         public void ShouldFindNodeAtEndOfSubstring()
         {
             Assert.AreNotEqual(-1, st.FindSubstringNode("ab", 0, st.GetEdgesWithSource(0)));
+        }
+
+        [Test]
+        public void ShouldFindExistingSubstring()
+        {
+            Assert.True(st.FindSubstring("defghii"));
+            Assert.True(st.FindSubstring("bcabc"));
+            Assert.True(st.FindSubstring("bab"));
+            Assert.True(st.FindSubstring("bcabababab"));
+            Assert.True(st.FindSubstring("ghiih"));
+        }
+
+        [Test]
+        public void ShouldNotFindNonExistingSubstring()
+        {
+            Assert.False(st.FindSubstring("aaab"));
+        }
+
+        [Test]
+        public void ShouldFindAllSubstringOccurences()
+        {
+            var substringOccurences = st.FindAllSubstrings("abc");
+            Assert.AreEqual(5, substringOccurences.Count());
+            substringOccurences = st.FindAllSubstrings("c");
+            Assert.AreEqual(5, substringOccurences.Count());
+            substringOccurences = st.FindAllSubstrings("def");
+            Assert.AreEqual(1, substringOccurences.Count());
+            substringOccurences = st.FindAllSubstrings("aba");
+            Assert.AreEqual(3, substringOccurences.Count());
+            substringOccurences = st.FindAllSubstrings("bc");
+            Assert.AreEqual(5, substringOccurences.Count());
+        }
+
+        [Test]
+        public void ShouldNotFindSubstringsThatDontExistInTree()
+        {
+            var substringOccurences = st.FindAllSubstrings("jason");
+            Assert.AreEqual(0, substringOccurences.Count());
+            substringOccurences = st.FindAllSubstrings("abbbb");
+            Assert.AreEqual(0, substringOccurences.Count());
+            substringOccurences = st.FindAllSubstrings("abcdd");
+            Assert.AreEqual(0, substringOccurences.Count());
+            substringOccurences = st.FindAllSubstrings("z");
+            Assert.AreEqual(0, substringOccurences.Count());
         }
     }
 }
